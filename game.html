@@ -2,6 +2,8 @@
 <html>
 
 <head>
+	<script src="jquery-3.3.1.min.js"></script>
+	<script src="rest.js"></script>
 	<style type="text/css">
 		div.player_top
 		{
@@ -577,6 +579,15 @@
 </body>
 
 <script type="text/javascript">
+	const turn = 1;
+	const round = 1;
+
+	window.onload=function() {
+		console.log("start");
+		getBoard(round, turn);
+	};
+
+
 	function setPlayerName(_name,_id)
 	{
 		if(id===1)
