@@ -707,6 +707,10 @@
 				cost[2]=document.getElementById("_112c");
 				cost[3]=document.getElementById("_113c");
 				cost[4]=document.getElementById("_114c");
+				if(p<4)color[4].hidden=true;
+				if(p<3)color[3].hidden=true;
+				if(p<2)color[2].hidden=true;
+				p=0;
 				if(red_cost>0)
 				{
 					++p;
@@ -756,6 +760,10 @@
 				cost[2]=document.getElementById("_122c");
 				cost[3]=document.getElementById("_123c");
 				cost[4]=document.getElementById("_124c");
+				if(p<4)color[4].hidden=true;
+				if(p<3)color[3].hidden=true;
+				if(p<2)color[2].hidden=true;
+				p=0;
 				if(red_cost>0)
 				{
 					++p;
@@ -805,6 +813,10 @@
 				cost[2]=document.getElementById("_132c");
 				cost[3]=document.getElementById("_133c");
 				cost[4]=document.getElementById("_134c");
+				if(p<4)color[4].hidden=true;
+				if(p<3)color[3].hidden=true;
+				if(p<2)color[2].hidden=true;
+				p=0;
 				if(red_cost>0)
 				{
 					++p;
@@ -854,6 +866,10 @@
 				cost[2]=document.getElementById("_142c");
 				cost[3]=document.getElementById("_143c");
 				cost[4]=document.getElementById("_144c");
+				if(p<4)color[4].hidden=true;
+				if(p<3)color[3].hidden=true;
+				if(p<2)color[2].hidden=true;
+				p=0;
 				if(red_cost>0)
 				{
 					++p;
@@ -903,6 +919,10 @@
 				cost[2]=document.getElementById("_212c");
 				cost[3]=document.getElementById("_213c");
 				cost[4]=document.getElementById("_214c");
+				if(p<4)color[4].hidden=true;
+				if(p<3)color[3].hidden=true;
+				if(p<2)color[2].hidden=true;
+				p=0;
 				if(red_cost>0)
 				{
 					++p;
@@ -952,6 +972,10 @@
 				cost[2]=document.getElementById("_222c");
 				cost[3]=document.getElementById("_223c");
 				cost[4]=document.getElementById("_224c");
+				if(p<4)color[4].hidden=true;
+				if(p<3)color[3].hidden=true;
+				if(p<2)color[2].hidden=true;
+				p=0;
 				if(red_cost>0)
 				{
 					++p;
@@ -1001,6 +1025,10 @@
 				cost[2]=document.getElementById("_232c");
 				cost[3]=document.getElementById("_233c");
 				cost[4]=document.getElementById("_234c");
+				if(p<4)color[4].hidden=true;
+				if(p<3)color[3].hidden=true;
+				if(p<2)color[2].hidden=true;
+				p=0;
 				if(red_cost>0)
 				{
 					++p;
@@ -1050,6 +1078,10 @@
 				cost[2]=document.getElementById("_242c");
 				cost[3]=document.getElementById("_243c");
 				cost[4]=document.getElementById("_244c");
+				if(p<4)color[4].hidden=true;
+				if(p<3)color[3].hidden=true;
+				if(p<2)color[2].hidden=true;
+				p=0;
 				if(red_cost>0)
 				{
 					++p;
@@ -1099,6 +1131,10 @@
 				cost[2]=document.getElementById("_312c");
 				cost[3]=document.getElementById("_313c");
 				cost[4]=document.getElementById("_314c");
+				if(p<4)color[4].hidden=true;
+				if(p<3)color[3].hidden=true;
+				if(p<2)color[2].hidden=true;
+				p=0;
 				if(red_cost>0)
 				{
 					++p;
@@ -1148,6 +1184,10 @@
 				cost[2]=document.getElementById("_322c");
 				cost[3]=document.getElementById("_323c");
 				cost[4]=document.getElementById("_324c");
+				if(p<4)color[4].hidden=true;
+				if(p<3)color[3].hidden=true;
+				if(p<2)color[2].hidden=true;
+				p=0;
 				if(red_cost>0)
 				{
 					++p;
@@ -1197,6 +1237,10 @@
 				cost[2]=document.getElementById("_332c");
 				cost[3]=document.getElementById("_333c");
 				cost[4]=document.getElementById("_334c");
+				if(p<4)color[4].hidden=true;
+				if(p<3)color[3].hidden=true;
+				if(p<2)color[2].hidden=true;
+				p=0;
 				if(red_cost>0)
 				{
 					++p;
@@ -1246,6 +1290,10 @@
 				cost[2]=document.getElementById("_342c");
 				cost[3]=document.getElementById("_343c");
 				cost[4]=document.getElementById("_344c");
+				if(p<4)color[4].hidden=true;
+				if(p<3)color[3].hidden=true;
+				if(p<2)color[2].hidden=true;
+				p=0;
 				if(red_cost>0)
 				{
 					++p;
@@ -1278,6 +1326,219 @@
 				}
 				break;
 			default:break;
+		}
+	}
+	function getGem(red,white,blue,black,green,gold)
+	{
+		gred.innerHTML=red;
+		gwhi.innerHTML=white;
+		gblu.innerHTML=blue;
+		gbla.innerHTML=black;
+		ggre.innerHTML=green;
+		ggol.innerHTML=gold;
+	}
+	function setNoble(n_id,red_cost,white_cost,blue_cost,black_cost,green_cost)
+	{
+		var p=0;
+		if(red_cost>0)++p;
+		if(white_cost>0)++p;
+		if(blue_cost>0)++p;
+		if(black_cost>0)++p;
+		if(green_cost>0)++p;
+		switch (n_id)
+		{
+			case 1:
+				var color=new Array(5);
+				color[1]=document.getElementById("n11c");
+				color[2]=document.getElementById("n12c");
+				color[3]=document.getElementById("n13c");
+				var cost=new Array(5);
+				cost[1]=document.getElementById("n11n");
+				cost[2]=document.getElementById("n12n");
+				cost[3]=document.getElementById("n13n");
+				if(p<3)color[3].hidden=true;
+				p=0;
+				if(red_cost>0)
+				{
+					++p;
+					color[p].style="background:rgb(192,64,64)";
+					cost[p].innerHTML=red_cost;
+				}
+				if(white_cost>0)
+				{
+					++p;
+					color[p].style="background:rgb(192,192,192)";
+					cost[p].innerHTML=white_cost;
+				}
+				if(blue_cost>0)
+				{
+					++p;
+					color[p].style="background:rgb(64,64,192)";
+					cost[p].innerHTML=blue_cost;
+				}
+				if(black_cost>0)
+				{
+					++p;
+					color[p].style="background:rgb(64,64,64)";
+					cost[p].innerHTML=black_cost;
+				}
+				if(green_cost>0)
+				{
+					++p;
+					color[p].style="background:rgb(64,192,64)";
+					cost[p].innerHTML=green_cost;
+				}
+				break;
+			case 2:
+				var color=new Array(5);
+				color[1]=document.getElementById("n21c");
+				color[2]=document.getElementById("n22c");
+				color[3]=document.getElementById("n23c");
+				var cost=new Array(5);
+				cost[1]=document.getElementById("n21n");
+				cost[2]=document.getElementById("n22n");
+				cost[3]=document.getElementById("n23n");
+				if(p<3)color[3].hidden=true;
+				p=0;
+				if(red_cost>0)
+				{
+					++p;
+					color[p].style="background:rgb(192,64,64)";
+					cost[p].innerHTML=red_cost;
+				}
+				if(white_cost>0)
+				{
+					++p;
+					color[p].style="background:rgb(192,192,192)";
+					cost[p].innerHTML=white_cost;
+				}
+				if(blue_cost>0)
+				{
+					++p;
+					color[p].style="background:rgb(64,64,192)";
+					cost[p].innerHTML=blue_cost;
+				}
+				if(black_cost>0)
+				{
+					++p;
+					color[p].style="background:rgb(64,64,64)";
+					cost[p].innerHTML=black_cost;
+				}
+				if(green_cost>0)
+				{
+					++p;
+					color[p].style="background:rgb(64,192,64)";
+					cost[p].innerHTML=green_cost;
+				}
+				break;
+			case 3:
+				var color=new Array(5);
+				color[1]=document.getElementById("n31c");
+				color[2]=document.getElementById("n32c");
+				color[3]=document.getElementById("n33c");
+				var cost=new Array(5);
+				cost[1]=document.getElementById("n31n");
+				cost[2]=document.getElementById("n32n");
+				cost[3]=document.getElementById("n33n");
+				if(p<3)color[3].hidden=true;
+				p=0;
+				if(red_cost>0)
+				{
+					++p;
+					color[p].style="background:rgb(192,64,64)";
+					cost[p].innerHTML=red_cost;
+				}
+				if(white_cost>0)
+				{
+					++p;
+					color[p].style="background:rgb(192,192,192)";
+					cost[p].innerHTML=white_cost;
+				}
+				if(blue_cost>0)
+				{
+					++p;
+					color[p].style="background:rgb(64,64,192)";
+					cost[p].innerHTML=blue_cost;
+				}
+				if(black_cost>0)
+				{
+					++p;
+					color[p].style="background:rgb(64,64,64)";
+					cost[p].innerHTML=black_cost;
+				}
+				if(green_cost>0)
+				{
+					++p;
+					color[p].style="background:rgb(64,192,64)";
+					cost[p].innerHTML=green_cost;
+				}
+				break;
+			case 4:
+				var color=new Array(5);
+				color[1]=document.getElementById("n41c");
+				color[2]=document.getElementById("n42c");
+				color[3]=document.getElementById("n43c");
+				var cost=new Array(5);
+				cost[1]=document.getElementById("n41n");
+				cost[2]=document.getElementById("n42n");
+				cost[3]=document.getElementById("n43n");
+				if(p<3)color[3].hidden=true;
+				p=0;
+				if(red_cost>0)
+				{
+					++p;
+					color[p].style="background:rgb(192,64,64)";
+					cost[p].innerHTML=red_cost;
+				}
+				if(white_cost>0)
+				{
+					++p;
+					color[p].style="background:rgb(192,192,192)";
+					cost[p].innerHTML=white_cost;
+				}
+				if(blue_cost>0)
+				{
+					++p;
+					color[p].style="background:rgb(64,64,192)";
+					cost[p].innerHTML=blue_cost;
+				}
+				if(black_cost>0)
+				{
+					++p;
+					color[p].style="background:rgb(64,64,64)";
+					cost[p].innerHTML=black_cost;
+				}
+				if(green_cost>0)
+				{
+					++p;
+					color[p].style="background:rgb(64,192,64)";
+					cost[p].innerHTML=green_cost;
+				}
+				break;
+			default:
+				break;
+
+		}
+	}
+	function deleteNoble(n_id)
+	{
+		switch (n_id)
+		{
+			case 1:
+				document.getElementById("n1").hidden=true;
+				break;
+			case 2:
+				document.getElementById("n2").hidden=true;
+				break;
+			case 3:
+				document.getElementById("n3").hidden=true;
+				break;
+			case 4:
+				document.getElementById("n4").hidden=true;
+				break;
+			default:
+				break;
+
 		}
 	}
 	<!-- TODO: 发送请求 -->
