@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<style type="text/css">
+		div.player_top
+		{
+			 position:fixed;
+			 left:2%;
+			 top:5%;
+			 height:90%;
+			 width:20%;
+		}
+		div.player
+		{
+			position:absolute;
+			height:30%;
+			width:80%;
+			align:left;
+			border:3px solid rgb(0,0,0);
+		}
+		div.card_top
+		{
+			 position:fixed;
+			 left:22%;
+			 top:5%;
+			 height:90%;
+			 width:58%;
+		}
+		div.card_stack
+		{
+			 position:absolute;
+			 height:30%;
+			 width:19%;
+			 border:3px solid rgb(0,0,0);
+			 border-radius:5%;
+		}
+		div.card
+		{
+			 position:absolute;
+			 height:30%;
+			 width:19%;
+			 border:1px solid rgb(0,0,0);
+		}
+		div.bank_top
+		{
+			 position:fixed;
+			 left:82%;
+			 top:5%;
+			 height:90%;
+			 width:10%;
+		}
+		div.noble_top
+		{
+			 position:fixed;
+			 left:91%;
+			 top:6%;
+			 height:90%;
+			 width:7%;
+		}
+		div.gem
+		{
+			position:absolute;
+			width: 62.5%;
+			height: 12.5%;
+			border:3px solid rgb(0,0,0);
+			border-radius: 50%;
+			-moz-border-radius: 50%;
+			-webkit-border-radius: 50%;
+		}
+		div.noble
+		{
+			position:absolute;
+			height:23%;
+			width:100%;
+			background:rgb(128,128,128);
+			border:3px solid rgb(0,0,0);
+		}
+		div.player_point
+		{
+			position:absolute;
+			width: 20%;
+			height: 20%;
+			background: rgb(0,0,0);
+			border-radius: 50%;
+			-moz-border-radius: 50%;
+			-webkit-border-radius: 50%;
+		}
+		div.player_bonus
+		{
+			position:absolute;
+			height:14%;
+			width:24%;
+			<!-- border:1% solid rgb(0,0,0); -->
+		}
+		div.player_token
+		{
+			position:absolute;
+			height:14%;
+			width:24%;
+		}
+		p
+		{
+			margin-block-start:0px;
+			position:absolute;
+		}
+		p.ctr
+		{
+			height:100%;
+			width:100%;
+			text-align:center;
+		}
+		div.card_cost
+		{
+			position:absolute;
+			height:19%;
+			width:24%;
+			background:rgb(192,192,192);
+		}
+		div.card_point
+		{
+			position:absolute;
+			height:19%;
+			width:24%;
+		}
+		div.noble_point
+		{
+			position:absolute;
+			height:17%;
+			width:24%;
+			background:rgb(192,192,192);
+		}
+		div.noble_cost
+		{
+			position:absolute;
+			height:17%;
+			width:24%;
+		}
+		div.next
+		{
+			position:absolute;
+			top:95%;
+			height:5%;
+			width:65%;
+			background:rgb(192,192,192);
+			border:3px solid rgb(0,0,0);
+		}
+	</style>
+</head>
+
+<body>
+	<!-- TODO: 玩家手上矿石数量 -->
+	<div id="player" class="player_top">
+		<div class="player" style="background:rgb(128,128,128)">
+			<p id="player1_name" style="top:13%; text-decoration:underline; font-size:200%">player1</p>
+			<div class="player_point" style="left:70%; top:15%; background:rgb(192,192,192)">
+				<p id="player1_point" class="ctr" style="font-size:150%">0</p>
+			</div>
+			<div class="player_bonus" style="top:55%; background:rgb(192,64,64)">
+				<p id="player1_bred" class="ctr">0</p>
+			</div>
+			<div class="player_token" style="top:55%; left:25%; background:rgb(192,64,64)">
+				<p id="player1_tred" class="ctr">0</p>
+			</div>
+			<div class="player_bonus" style="top:70%; background:rgb(64,64,192)">
+				<p id="player1_bblu" class="ctr">0</p>
+			</div>
+			<div class="player_token" style="top:70%; left:25%; background:rgb(64,64,192)">
+				<p id="player1_tblu" class="ctr">0</p>
+			</div>
+			<div class="player_bonus" style="top:85%; background:rgb(64,192,64)">
+				<p id="player1_bgre" class="ctr">0</p>
+			</div>
+			<div class="player_token" style="top:85%; left:25%; background:rgb(64,192,64)">
+				<p id="player1_tgre" class="ctr">0</p>
+			</div>
+			<div class="player_bonus" style="top:55%; left:50%; background:rgb(192,192,192)">
+				<p id="player1_bwhi" class="ctr">0</p>
+			</div>
+			<div class="player_token" style="top:55%; left:75%; background:rgb(192,192,192)">
+				<p id="player1_twhi" class="ctr">0</p>
+			</div>
+			<div class="player_bonus" style="top:70%; left:50%; background:rgb(64,64,64)">
+				<p id="player1_bbla" class="ctr">0</p>
+			</div>
+			<div class="player_token" style="top:70%; left:75%; background:rgb(64,64,64)">
+				<p id="player1_tbla" class="ctr">0</p>
+			</div>
+			<div class="player_bonus" style="top:85%; left:50%; background:rgb(192,192,64)">
+				<p class="ctr"></p>
+			</div>
+			<div class="player_token" style="top:85%; left:75%; background:rgb(192,192,64)">
+				<p id="player1_tgol" class="ctr">0</p>
+			</div>
+		</div>
+		<div class="player" style="top:35%; background:rgb(128,128,128)">
+			<p id="player2_name" style="top:13%; text-decoration:underline; font-size:200%">player2</p>
+			<div class="player_point" style="left:70%; top:15%; background:rgb(192,192,192)">
+				<p id="player2_point" class="ctr" style="font-size:150%">0</p>
+			</div>
+			<div class="player_bonus" style="top:55%; background:rgb(192,64,64)">
+				<p id="player2_bred" class="ctr">0</p>
+			</div>
+			<div class="player_token" style="top:55%; left:25%; background:rgb(192,64,64)">
+				<p id="player2_tred" class="ctr">0</p>
+			</div>
+			<div class="player_bonus" style="top:70%; background:rgb(64,64,192)">
+				<p id="player2_bblu" class="ctr">0</p>
+			</div>
+			<div class="player_token" style="top:70%; left:25%; background:rgb(64,64,192)">
+				<p id="player2_tblu" class="ctr">0</p>
+			</div>
+			<div class="player_bonus" style="top:85%; background:rgb(64,192,64)">
+				<p id="player2_bgre" class="ctr">0</p>
+			</div>
+			<div class="player_token" style="top:85%; left:25%; background:rgb(64,192,64)">
+				<p id="player2_tgre" class="ctr">0</p>
+			</div>
+			<div class="player_bonus" style="top:55%; left:50%; background:rgb(192,192,192)">
+				<p id="player2_bwhi" class="ctr">0</p>
+			</div>
+			<div class="player_token" style="top:55%; left:75%; background:rgb(192,192,192)">
+				<p id="player2_twhi" class="ctr">0</p>
+			</div>
+			<div class="player_bonus" style="top:70%; left:50%; background:rgb(64,64,64)">
+				<p id="player2_bbla" class="ctr">0</p>
+			</div>
+			<div class="player_token" style="top:70%; left:75%; background:rgb(64,64,64)">
+				<p id="player2_tbla" class="ctr">0</p>
+			</div>
+			<div class="player_bonus" style="top:85%; left:50%; background:rgb(192,192,64)">
+				<p class="ctr"></p>
+			</div>
+			<div class="player_token" style="top:85%; left:75%; background:rgb(192,192,64)">
+				<p id="player2_tgol" class="ctr">0</p>
+			</div>
+		</div>
+		<div class="player" style="top:70%; background:rgb(128,128,128)">
+			<p id="player3_name" style="top:13%; text-decoration:underline; font-size:200%">player3</p>
+			<div class="player_point" style="left:70%; top:15%; background:rgb(192,192,192)">
+				<p id="player3_point" class="ctr" style="font-size:150%">0</p>
+			</div>
+			<div class="player_bonus" style="top:55%; background:rgb(192,64,64)">
+				<p id="player3_bred" class="ctr">0</p>
+			</div>
+			<div class="player_token" style="top:55%; left:25%; background:rgb(192,64,64)">
+				<p id="player3_tred" class="ctr">0</p>
+			</div>
+			<div class="player_bonus" style="top:70%; background:rgb(64,64,192)">
+				<p id="player3_bblu" class="ctr">0</p>
+			</div>
+			<div class="player_token" style="top:70%; left:25%; background:rgb(64,64,192)">
+				<p id="player3_tblu" class="ctr">0</p>
+			</div>
+			<div class="player_bonus" style="top:85%; background:rgb(64,192,64)">
+				<p id="player3_bgre" class="ctr">0</p>
+			</div>
+			<div class="player_token" style="top:85%; left:25%; background:rgb(64,192,64)">
+				<p id="player3_tgre" class="ctr">0</p>
+			</div>
+			<div class="player_bonus" style="top:55%; left:50%; background:rgb(192,192,192)">
+				<p id="player3_bwhi" class="ctr">0</p>
+			</div>
+			<div class="player_token" style="top:55%; left:75%; background:rgb(192,192,192)">
+				<p id="player3_twhi" class="ctr">0</p>
+			</div>
+			<div class="player_bonus" style="top:70%; left:50%; background:rgb(64,64,64)">
+				<p id="player3_bbla" class="ctr">0</p>
+			</div>
+			<div class="player_token" style="top:70%; left:75%; background:rgb(64,64,64)">
+				<p id="player3_tbla" class="ctr">0</p>
+			</div>
+			<div class="player_bonus" style="top:85%; left:50%; background:rgb(192,192,64)">
+				<p class="ctr"></p>
+			</div>
+			<div class="player_token" style="top:85%; left:75%; background:rgb(192,192,64)">
+				<p id="player3_tgol" class="ctr">0</p>
+			</div>
+		</div>
+	</div>
+	<div id="card" class="card_top">
+		<div class="card_stack" style="text-align:center; background:rgb(128,128,128)">
+			<h1>1</h1>
+		</div>
+		<div class="card_stack" style="top:35%; text-align:center; background:rgb(128,128,128)">
+			<h1>2</h1>
+		</div>
+		<div class="card_stack" style="top:70%; text-align:center; background:rgb(128,128,128)">
+			<h1>3</h1>
+		</div>
+		<div id="_11" class="card" style="left:21%; background:rgb(128,128,128)">
+			<div id="_11p" class="card_point" style="left:0%; top:10%; background:rgb(192,192,192)">
+				<p class="ctr">0</p>
+			</div>
+			<div id="_111" class="card_cost" style="left:0%; top:80%; background:rgb(192,192,192)">
+				<p class="ctr">0</p>
+			</div>
+			<div id="_112" class="card_cost" style="left:25%; top:80%; background:rgb(192,192,192)">
+				<p class="ctr">0</p>
+			</div>
+			<div id="_113" class="card_cost" style="left:50%; top:80%; background:rgb(192,192,192)">
+				<p class="ctr">0</p>
+			</div>
+			<div id="_114" class="card_cost" style="left:75%; top:80%; background:rgb(192,192,192)">
+				<p class="ctr">0</p>
+			</div>
+		</div>
+		<div id="_12" class="card" style="left:41%; background:rgb(128,128,128)">
+			<div class="card_point" style="left:0%; top:10%; background:rgb(192,192,192)">
+				<p id="_12p" class="ctr">0</p>
+			</div>
+			<div class="card_cost" style="left:0%; top:80%; background:rgb(192,192,192)">
+				<p id="_121" class="ctr">0</p>
+			</div>
+			<div class="card_cost" style="left:25%; top:80%; background:rgb(192,192,192)">
+				<p id="_122" class="ctr">0</p>
+			</div>
+			<div class="card_cost" style="left:50%; top:80%; background:rgb(192,192,192)">
+				<p id="_123" class="ctr">0</p>
+			</div>
+			<div class="card_cost" style="left:75%; top:80%; background:rgb(192,192,192)">
+				<p id="_124" class="ctr">0</p>
+			</div>
+		</div>
+		<div id="_13" class="card" style="left:61%; background:rgb(128,128,128)">
+			<div class="card_point" style="left:0%; top:10%; background:rgb(192,192,192)">
+				<p id="_13p" class="ctr">0</p>
+			</div>
+			<div class="card_cost" style="left:0%; top:80%; background:rgb(192,192,192)">
+				<p id="_131" class="ctr">0</p>
+			</div>
+			<div class="card_cost" style="left:25%; top:80%; background:rgb(192,192,192)">
+				<p id="_132" class="ctr">0</p>
+			</div>
+			<div class="card_cost" style="left:50%; top:80%; background:rgb(192,192,192)">
+				<p id="_133" class="ctr">0</p>
+			</div>
+			<div class="card_cost" style="left:75%; top:80%; background:rgb(192,192,192)">
+				<p id="_134" class="ctr">0</p>
+			</div>
+		</div>
+		<div id="_14" class="card" style="left:81%; background:rgb(128,128,128)">
+			<div class="card_point" style="left:0%; top:10%; background:rgb(192,192,192)">
+				<p id="_14p" class="ctr">0</p>
+			</div>
+			<div class="card_cost" style="left:0%; top:80%; background:rgb(192,192,192)">
+				<p id="_141" class="ctr">0</p>
+			</div>
+			<div class="card_cost" style="left:25%; top:80%; background:rgb(192,192,192)">
+				<p id="_142" class="ctr">0</p>
+			</div>
+			<div class="card_cost" style="left:50%; top:80%; background:rgb(192,192,192)">
+				<p id="_143" class="ctr">0</p>
+			</div>
+			<div class="card_cost" style="left:75%; top:80%; background:rgb(192,192,192)">
+				<p id="_144" class="ctr">0</p>
+			</div>
+		</div>
+		<div id="_21" class="card" style="left:21%; top:35%; background:rgb(128,128,128)">
+			<div class="card_point" style="left:0%; top:10%; background:rgb(192,192,192)">
+				<p id="_21p" class="ctr">0</p>
+			</div>
+			<div class="card_cost" style="left:0%; top:80%; background:rgb(192,192,192)">
+				<p id="_211" class="ctr">0</p>
+			</div>
+			<div class="card_cost" style="left:25%; top:80%; background:rgb(192,192,192)">
+				<p id="_212" class="ctr">0</p>
+			</div>
+			<div class="card_cost" style="left:50%; top:80%; background:rgb(192,192,192)">
+				<p id="_213" class="ctr">0</p>
+			</div>
+			<div class="card_cost" style="left:75%; top:80%; background:rgb(192,192,192)">
+				<p id="_214" class="ctr">0</p>
+			</div>
+		</div>
+		<div id="_22" class="card" style="left:41%; top:35%; background:rgb(128,128,128)">
+			<div class="card_point" style="left:0%; top:10%; background:rgb(192,192,192)">
+				<p id="_22p" class="ctr">0</p>
+			</div>
+			<div class="card_cost" style="left:0%; top:80%; background:rgb(192,192,192)">
+				<p id="_221" class="ctr">0</p>
+			</div>
+			<div class="card_cost" style="left:25%; top:80%; background:rgb(192,192,192)">
+				<p id="_222" class="ctr">0</p>
+			</div>
+			<div class="card_cost" style="left:50%; top:80%; background:rgb(192,192,192)">
+				<p id="_223" class="ctr">0</p>
+			</div>
+			<div class="card_cost" style="left:75%; top:80%; background:rgb(192,192,192)">
+				<p id="_224" class="ctr">0</p>
+			</div>
+		</div>
+		<div id="_23" class="card" style="left:61%; top:35%; background:rgb(128,128,128)">
+			<div class="card_point" style="left:0%; top:10%; background:rgb(192,192,192)">
+				<p id="_23p" class="ctr">0</p>
+			</div>
+			<div class="card_cost" style="left:0%; top:80%; background:rgb(192,192,192)">
+				<p id="_231" class="ctr">0</p>
+			</div>
+			<div class="card_cost" style="left:25%; top:80%; background:rgb(192,192,192)">
+				<p id="_232" class="ctr">0</p>
+			</div>
+			<div class="card_cost" style="left:50%; top:80%; background:rgb(192,192,192)">
+				<p id="_233" class="ctr">0</p>
+			</div>
+			<div class="card_cost" style="left:75%; top:80%; background:rgb(192,192,192)">
+				<p id="_234" class="ctr">0</p>
+			</div>
+		</div>
+		<div id="_24" class="card" style="left:81%; top:35%; background:rgb(128,128,128)">
+			<div class="card_point" style="left:0%; top:10%; background:rgb(192,192,192)">
+				<p id="_24p" class="ctr">0</p>
+			</div>
+			<div class="card_cost" style="left:0%; top:80%; background:rgb(192,192,192)">
+				<p id="_241" class="ctr">0</p>
+			</div>
+			<div class="card_cost" style="left:25%; top:80%; background:rgb(192,192,192)">
+				<p id="_242" class="ctr">0</p>
+			</div>
+			<div class="card_cost" style="left:50%; top:80%; background:rgb(192,192,192)">
+				<p id="_243" class="ctr">0</p>
+			</div>
+			<div class="card_cost" style="left:75%; top:80%; background:rgb(192,192,192)">
+				<p id="_244" class="ctr">0</p>
+			</div>
+		</div>
+		<div id="_31" class="card" style="left:21%; top:70%; background:rgb(128,128,128)">
+			<div class="card_point" style="left:0%; top:10%; background:rgb(192,192,192)">
+				<p id="_31p" class="ctr">0</p>
+			</div>
+			<div class="card_cost" style="left:0%; top:80%; background:rgb(192,192,192)">
+				<p id="_311" class="ctr">0</p>
+			</div>
+			<div class="card_cost" style="left:25%; top:80%; background:rgb(192,192,192)">
+				<p id="_312" class="ctr">0</p>
+			</div>
+			<div class="card_cost" style="left:50%; top:80%; background:rgb(192,192,192)">
+				<p id="_313" class="ctr">0</p>
+			</div>
+			<div class="card_cost" style="left:75%; top:80%; background:rgb(192,192,192)">
+				<p id="_314" class="ctr">0</p>
+			</div>
+		</div>
+		<div id="_32" class="card" style="left:41%; top:70%; background:rgb(128,128,128)">
+			<div class="card_point" style="left:0%; top:10%; background:rgb(192,192,192)">
+				<p id="_32p" class="ctr">0</p>
+			</div>
+			<div class="card_cost" style="left:0%; top:80%; background:rgb(192,192,192)">
+				<p id="_321" class="ctr">0</p>
+			</div>
+			<div class="card_cost" style="left:25%; top:80%; background:rgb(192,192,192)">
+				<p id="_322" class="ctr">0</p>
+			</div>
+			<div class="card_cost" style="left:50%; top:80%; background:rgb(192,192,192)">
+				<p id="_323" class="ctr">0</p>
+			</div>
+			<div class="card_cost" style="left:75%; top:80%; background:rgb(192,192,192)">
+				<p id="_324" class="ctr">0</p>
+			</div>
+		</div>
+		<div id="_33" class="card" style="left:61%; top:70%; background:rgb(128,128,128)">
+			<div class="card_point" style="left:0%; top:10%; background:rgb(192,192,192)">
+				<p id="_33p" class="ctr">0</p>
+			</div>
+			<div class="card_cost" style="left:0%; top:80%; background:rgb(192,192,192)">
+				<p id="_331" class="ctr">0</p>
+			</div>
+			<div class="card_cost" style="left:25%; top:80%; background:rgb(192,192,192)">
+				<p id="_332" class="ctr">0</p>
+			</div>
+			<div class="card_cost" style="left:50%; top:80%; background:rgb(192,192,192)">
+				<p id="_333" class="ctr">0</p>
+			</div>
+			<div class="card_cost" style="left:75%; top:80%; background:rgb(192,192,192)">
+				<p id="_334" class="ctr">0</p>
+			</div>
+		</div>
+		<div id="_34" class="card" style="left:81%; top:70%; background:rgb(128,128,128)">
+			<div class="card_point" style="left:0%; top:10%; background:rgb(192,192,192)">
+				<p id="_34p" class="ctr">0</p>
+			</div>
+			<div class="card_cost" style="left:0%; top:80%; background:rgb(192,192,192)">
+				<p id="_341" class="ctr">0</p>
+			</div>
+			<div class="card_cost" style="left:25%; top:80%; background:rgb(192,192,192)">
+				<p id="_342" class="ctr">0</p>
+			</div>
+			<div class="card_cost" style="left:50%; top:80%; background:rgb(192,192,192)">
+				<p id="_343" class="ctr">0</p>
+			</div>
+			<div class="card_cost" style="left:75%; top:80%; background:rgb(192,192,192)">
+				<p id="_344" class="ctr">0</p>
+			</div>
+		</div>
+	</div>
+	<div id="bank" class="bank_top">
+		<div class="gem" style="background:rgb(192,192,64)">
+			<h1 id="ggol" style="text-align:center">5</h1>
+		</div>
+		<div class="gem" style="top:15%;background:rgb(192,64,64)">
+			<h1 id="gred" style="text-align:center">5</h1>
+		</div>
+		<div class="gem" style="top:30%;background:rgb(64,64,64)">
+			<h1 id="gbla" style="text-align:center">5</h1>
+		</div>
+		<div class="gem" style="top:45%;background:rgb(64,64,192)">
+			<h1 id="gblu" style="text-align:center">5</h1>
+		</div>
+		<div class="gem" style="top:60%;background:rgb(192,192,192)">
+			<h1 id="gwhi" style="text-align:center">5</h1>
+		</div>
+		<div class="gem" style="top:75%;background:rgb(64,192,64)">
+			<h1 id="ggre" style="text-align:center">5</h1>
+		</div>
+		<div id="next" class="next">
+			<p class="ctr" onclick="getRequest()">next</p>
+		</div>
+	</div>
+	<div id="noble" class="noble_top">
+		<div id="n1" class="noble" style="top:0%">
+			<div class="noble_point" style="top:10%">
+				<p class="ctr">3</p>
+			</div>
+			<div id="n11c" class="noble_cost" style="top:37%; background:rgb(192,192,192)">
+				<p id="n11n" class="ctr">0</p>
+			</div>
+			<div id="n12c" class="noble_cost" style="top:55%; background:rgb(192,192,192)">
+				<p id="n12n" class="ctr">0</p>
+			</div>
+			<div id="n13c" class="noble_cost" style="top:73%; background:rgb(192,192,192)">
+				<p id="n13n" class="ctr">0</p>
+			</div>
+		</div>
+		<div id="n2" class="noble" style="top:25%">
+			<div class="noble_point" style="top:10%">
+				<p class="ctr">3</p>
+			</div>
+			<div id="n21c" class="noble_cost" style="top:37%; background:rgb(192,192,192)">
+				<p id="n21n" class="ctr">0</p>
+			</div>
+			<div id="n22c" class="noble_cost" style="top:55%; background:rgb(192,192,192)">
+				<p id="n22n" class="ctr">0</p>
+			</div>
+			<div id="n23c" class="noble_cost" style="top:73%; background:rgb(192,192,192)">
+				<p id="n23n" class="ctr">0</p>
+			</div>
+		</div>
+		<div id="n3" class="noble" style="top:50%">
+			<div class="noble_point" style="top:10%">
+				<p class="ctr">3</p>
+			</div>
+			<div id="n31c" class="noble_cost" style="top:37%; background:rgb(192,192,192)">
+				<p id="n31n" class="ctr">0</p>
+			</div>
+			<div id="n32c" class="noble_cost" style="top:55%; background:rgb(192,192,192)">
+				<p id="n32n" class="ctr">0</p>
+			</div>
+			<div id="n33c" class="noble_cost" style="top:73%; background:rgb(192,192,192)">
+				<p id="n33n" class="ctr">0</p>
+			</div>
+		</div>
+		<div id="n4" class="noble" style="top:75%">
+			<div class="noble_point" style="top:10%">
+				<p class="ctr">3</p>
+			</div>
+			<div id="n41c" class="noble_cost" style="top:37%; background:rgb(192,192,192)">
+				<p id="n41n" class="ctr">0</p>
+			</div>
+			<div id="n42c" class="noble_cost" style="top:55%; background:rgb(192,192,192)">
+				<p id="n42n" class="ctr">0</p>
+			</div>
+			<div id="n43c" class="noble_cost" style="top:73%; background:rgb(192,192,192)">
+				<p id="n43n" class="ctr">0</p>
+			</div>
+		</div>
+	</div>
+</body>
+
+<script type="text/javascript">
+	function setPlayerName(_name,_id)
+	{
+		if(id===1)
+		{
+			document.getElementById("player1_name").innerHTML=_name;
+		}
+		else if(id===2)
+		{
+			document.getElementById("player2_name").innerHTML=_name;
+		}
+		else if(id===3)
+		{
+			document.getElementById("player3_name").innerHTML=_name;
+		}
+	}
+	function setBonusNumber(_id,red_num,white_num,blue_num,black_num,green_num)
+	{
+		if(id===1)
+		{
+			document.getElementById("player1_bred").innerHTML=red_num;
+			document.getElementById("player1_bwhi").innerHTML=white_num;
+			document.getElementById("player1_bblu").innerHTML=blue_num;
+			document.getElementById("player1_bbla").innerHTML=black_num;
+			document.getElementById("player1_bgre").innerHTML=green_num;
+		}
+		else if(id===2)
+		{
+			document.getElementById("player2_bred").innerHTML=red_num;
+			document.getElementById("player2_bwhi").innerHTML=white_num;
+			document.getElementById("player2_bblu").innerHTML=blue_num;
+			document.getElementById("player2_bbla").innerHTML=black_num;
+			document.getElementById("player2_bgre").innerHTML=green_num;
+		}
+		else if(id===3)
+		{
+			document.getElementById("player3_bred").innerHTML=red_num;
+			document.getElementById("player3_bwhi").innerHTML=white_num;
+			document.getElementById("player3_bblu").innerHTML=blue_num;
+			document.getElementById("player3_bbla").innerHTML=black_num;
+			document.getElementById("player3_bgre").innerHTML=green_num;
+		}
+	}
+	function setTokenNumber(_id,red_num,white_num,blue_num,black_num,green_num,gold_num)
+	{
+		if(id===1)
+		{
+			document.getElementById("player1_tred").innerHTML=red_num;
+			document.getElementById("player1_twhi").innerHTML=white_num;
+			document.getElementById("player1_tblu").innerHTML=blue_num;
+			document.getElementById("player1_tbla").innerHTML=black_num;
+			document.getElementById("player1_tgre").innerHTML=green_num;
+			document.getElementById("player1_tgol").innerHTML=gold_num;
+		}
+		else if(id===2)
+		{
+			document.getElementById("player2_tred").innerHTML=red_num;
+			document.getElementById("player2_twhi").innerHTML=white_num;
+			document.getElementById("player2_tblu").innerHTML=blue_num;
+			document.getElementById("player2_tbla").innerHTML=black_num;
+			document.getElementById("player2_tgre").innerHTML=green_num;
+			document.getElementById("player2_tgol").innerHTML=gold_num;
+		}
+		else if(id===3)
+		{
+			document.getElementById("player3_tred").innerHTML=red_num;
+			document.getElementById("player3_twhi").innerHTML=white_num;
+			document.getElementById("player3_tblu").innerHTML=blue_num;
+			document.getElementById("player3_tbla").innerHTML=black_num;
+			document.getElementById("player3_tgre").innerHTML=green_num;
+			document.getElementById("player3_tgol").innerHTML=gold_num;
+		}
+	}
+	function deleteCard(cardid)
+	{
+
+	}
+
+	<!-- TODO: 发送请求 -->
+	function getRequest()
+	{
+
+	}
+</script>
+
+</html>
